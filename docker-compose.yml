@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  rstudio:
+    build: .
+    image: rocker:tidyverse
+    platform: linux/x86_64
+    volumes:
+      - ./R:/home/rstudio/R
+      - ./data:/home/rstudio/data
+    ports:
+      - 8787:8787
+    environment:
+      - PASSWORD=rstudio
+      - DISABLE_AUTH=true
+    tty: true
+    stdin_open: true
